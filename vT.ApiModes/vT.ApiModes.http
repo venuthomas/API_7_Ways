@@ -1,0 +1,6 @@
+@vT.ApiModes_HostAddress = http://localhost:5215
+
+GET {{vT.ApiModes_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+option csharp_namespace = "vT.Api_gPRC";
+
+package employees;
+
+service EmployeeService {
+  rpc GetAllEmployees (GetAllEmployeesRequest) returns (GetAllEmployeesResponse);
+  rpc GetEmployeeById (GetEmployeeByIdRequest) returns (GetEmployeeByIdResponse);
+  rpc CreateEmployee (CreateEmployeeRequest) returns (CreateEmployeeResponse);
+  rpc UpdateEmployee (UpdateEmployeeRequest) returns (UpdateEmployeeResponse);
+  rpc DeleteEmployee (DeleteEmployeeRequest) returns (DeleteEmployeeResponse);
+}
+
+message GetAllEmployeesRequest {}
+message GetAllEmployeesResponse {
+  repeated EmployeeDto Employees = 1;
+}
+
+message GetEmployeeByIdRequest {
+  int32 Id = 1;
+}
+message GetEmployeeByIdResponse {
+  EmployeeDto Employee = 1;
+}
+
+message CreateEmployeeRequest {
+  string FirstName = 1;
+  string LastName = 2;
+  int32 Age = 3;
+}
+message CreateEmployeeResponse {
+  EmployeeDto Employee = 1;
+}
+
+message UpdateEmployeeRequest {
+  int32 Id = 1;
+  string FirstName = 2;
+  string LastName = 3;
+  int32 Age = 4;
+}
+message UpdateEmployeeResponse {
+  bool updatedSuccessfully = 1;
+}
+
+message DeleteEmployeeRequest {
+  int32 Id = 1;
+}
+message DeleteEmployeeResponse {
+  bool deletedSuccessfully = 1;
+}
+
+message EmployeeDto {
+  int32 Id = 1;
+  string FirstName = 2;
+  string LastName = 3;
+  int32 Age = 4;
+}
