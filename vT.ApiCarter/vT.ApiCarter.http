@@ -1,0 +1,45 @@
+@vT.ApiScalar_HostAddress = http://localhost:12086
+
+### Retrieve all employees`
+GET http://localhost:12082/api/cartelAPI/GetAllEmployees
+Accept: application/json
+
+###
+
+### Retrieve an employee by ID
+# Set the `employeeId` to the appropriate value
+GET http://localhost:12082/api/cartelAPI/GetEmployeeById/{employeeId}
+Accept: application/json
+
+###
+
+### Create a new employee
+POST http://localhost:12082/api/cartelAPI/CreateEmployee
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "age": 30
+}
+
+###
+
+### Update an existing employee
+# Ensure the `employeeId` matches the ID in the payload
+PUT http://localhost:12082/api/cartelAPI/UpdateEmployeeById/{employeeId}
+Content-Type: application/json
+
+{
+  "id": 1,
+  "firstName": "Jane",
+  "lastName": "Doe",
+  "age": 32
+}
+
+###
+
+### Delete an employee
+DELETE http://localhost:12082/api/cartelAPI/DeleteEmployeeById/{employeeId}
+
+###

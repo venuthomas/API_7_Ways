@@ -1,0 +1,66 @@
+@vT.ApiGraphQL_HostAddress = http://localhost:12085
+
+### GraphQL Query: Retrieve all employees
+POST http://localhost:12085/api/graphql
+Content-Type: application/json
+
+{
+  "query": "{ getAllEmployees { id firstName lastName age } }"
+}
+
+###
+
+### GraphQL Query: Retrieve an employee by ID
+# Set the `employeeId` variable to the desired value
+POST http://localhost:12085/api/graphql
+Content-Type: application/json
+
+{
+  "query": "query GetEmployeeById($id: Int!) { employeeById(id: $id) { id firstName lastName age } }",
+  "variables": {
+    "id": 1253
+  }
+}
+
+###
+
+### GraphQL Mutation: Create a new employee
+POST http://localhost:12085/api/graphql
+Content-Type: application/json
+
+{
+  "query": "mutation { createEmployee(input: { firstName: \"John\", lastName: \"Doe\", age: 30 }) { id firstName lastName age } }"
+}
+
+###
+
+### GraphQL Mutation: Update an existing employee
+POST http://localhost:12085/api/graphql
+Content-Type: application/json
+
+{
+  "query": "mutation UpdateEmployee($input: UpdateEmployeeCommandInput!) { updateEmployee(input: $input) { updatedSuccessfully } }",
+  "variables": {
+    "input": {
+      "id": 1,
+      "firstName": "Jane434",
+      "lastName": "Doe",
+      "age": 34
+    }
+  }
+}
+
+###
+
+### GraphQL Mutation: Delete an employee
+POST http://localhost:12085/api/graphql
+Content-Type: application/json
+
+{
+  "query": "mutation DeleteEmployee($id: Int!) { deleteEmployee(id: $id) { deletedSuccessfully } }",
+  "variables": {
+    "id": 1253
+  }
+}
+
+###
